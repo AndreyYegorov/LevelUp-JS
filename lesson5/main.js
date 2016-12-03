@@ -268,8 +268,8 @@ bar.fillUpStore({
 console.log(bar); 
 john.getOrder({name: 'Juice', amount: 12, id: 0}, 'Drinks');
 john.getOrder({name: 'Vodka', amount: 10, id: 1}, 'Drinks');
-john.getOrder({name: 'Vodka', amount: 10, id: 1}, 'Drinks');
-john.getOrder({name: 'Vodka', amount: 10, id: 1}, 'Drinks');
+john.getOrder({name: 'Vodka', amount: 10, id: 2}, 'Drinks');
+john.getOrder({name: 'Vodka', amount: 10, id: 3}, 'Drinks');
 console.log(john.getTip(100));
 console.log(bar.divideTips());
 console.log(bar); 
