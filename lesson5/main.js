@@ -1,11 +1,7 @@
 /*--BAR--*/
 /*------------------------------------------------*/
 function Bar(
-	name,
-	employees = {},
-	store = {},
-	orders = [],
-	tips = 0
+	name
 	) {
 	this.name = name;
 	this.employees = {};
@@ -13,15 +9,15 @@ function Bar(
 	this.employees.waiters = [];
 	this.store = {};
 	this.store.drinks = [];
-	this.orders = orders;
+	this.orders = [];
 	this.tips = 0;
 }
 
-Bar.prototype.fillUpStore = function(unit, type) {
+Bar.prototype.fillUpStore = function(prod, type) {
 	let result = null,
 		prodArray,
 		prodTheSame,
-		limit = 5;
+		storeLimit = 5;
 
 	switch(type) {
 		case 'Drinks':
@@ -32,14 +28,14 @@ Bar.prototype.fillUpStore = function(unit, type) {
 			break;		
 	}
 
-	prodTheSame = prodArray.find(el => el.name === unit.name);
+	prodTheSame = prodArray.find(el => el.name === prod.name);
 
-	if(prodArray.length < limit) {
+	if(prodArray.length < storeLimit) {
 		if(prodTheSame) {
-			prodTheSame.amount += unit.amount;
+			prodTheSame.amount += prod.amount;
 		}
 		else {
-			prodArray.push(unit);
+			prodArray.push(prod);
 		}	
 	}
 	else {
@@ -67,16 +63,16 @@ Bar.prototype.divideTips = function() {
 Bar.prototype.hireEmployee = function(name, age, position, feature) {
 	let result = null,
 		employee,
-		posArray;
+		employeesArray;
 
 	switch(position) {
 		case 'Barman':
-			posArray = this.employees.barmen;
+			employeesArray = this.employees.barmen;
 			employee = new Barman(name, age, feature);
 
 			break;
 		case 'Waiter':
-			posArray = this.employees.waiters;
+			employeesArray = this.employees.waiters;
 			employee = new Waiter(name, age);
 
 			break;	
@@ -84,7 +80,7 @@ Bar.prototype.hireEmployee = function(name, age, position, feature) {
 			break;		
 	}
 
-	posArray.push(employee);
+	employeesArray.push(employee);
 
 	result = employee;
 
@@ -93,27 +89,27 @@ Bar.prototype.hireEmployee = function(name, age, position, feature) {
 
 Bar.prototype.fireEmployee = function(name, position) {
 	let result = null,
-		employeeId,
-		posArray;
+		employeeIndex,
+		employeesArray;
 
 	switch(position) {
 		case 'Barman':
-			posArray = this.employees.barmen;
+			employeesArray = this.employees.barmen;
 
 			break;
 		case 'Waiter':
-			posArray = this.employees.waiters;
+			employeesArray = this.employees.waiters;
 
 			break;	
 		default:
 			break;	
 	}
 
-	employeeId = posArray.findIndex(el => el.name === name);
+	employeeIndex = employeesArray.findIndex(el => el.name === name);
 
-	if(employeeId != -1) posArray.splice(employeeId, 1);
+	if(employeeIndex != -1) employeesArray.splice(employeeIndex, 1);
 
-	result = posArray;
+	result = employeesArray;
 
 	return result;
 }
@@ -148,9 +144,9 @@ Barman.prototype = Object.create(Employee.prototype);
 
 Barman.prototype.makeOrder = function(order, type) {
 	let result = null,
-		prodArray = null,
+		prodArray,
 		prodOrdered,
-		orderId,
+		orderIndex,
 		ordersArray = bar.orders;
 
 	switch(type) {
@@ -171,9 +167,9 @@ Barman.prototype.makeOrder = function(order, type) {
 		prodOrdered.amount -= order.amount;
 	}
 
-	orderId = ordersArray.findIndex(el => el.id === order.id);
+	orderIndex = ordersArray.findIndex(el => el === order);
 
-	if(orderId != -1) ordersArray.splice(orderId, 1);
+	if(orderIndex != -1) ordersArray.splice(orderIndex, 1);
 
 	result = order;	
 
@@ -195,7 +191,7 @@ Waiter.prototype = Object.create(Employee.prototype);
 
 Waiter.prototype.getOrder = function(order, type) {
 	let result = null,
-		prodArray = null,
+		prodArray,
 		prodOrdered,
 		ordersArray = bar.orders;
 
@@ -217,9 +213,9 @@ Waiter.prototype.getOrder = function(order, type) {
 		console.log(`Please, wait a little, your order will be prepared soon.`);
 
 		ordersArray.push(order);
-
-		result = ordersArray;
 	}	
+
+	result = ordersArray;
 
 	return result;
 };
@@ -238,7 +234,7 @@ Waiter.prototype.getTip = function(tips = 0) {
 
 let bar = new Bar('Midnight light');
 
-let viktor = bar.hireEmployee('Viktor Vernov', 24, 'Barman', 'Red sun');
+let viktor = bar.hireEmployee('Viktor Vernov', 24, 'Barman', 'Red sun');	
 let george = bar.hireEmployee('George Massa', 25, 'Barman', 'Night burn');
 let john = bar.hireEmployee('John Dou', 22, 'Waiter');
 let lena = bar.hireEmployee('Lena Mackgregor', 20, 'Waiter');
@@ -247,31 +243,28 @@ bar.fireEmployee('Viktor Vernov', 'Barman');
 
 bar.fillUpStore({
 	name: 'Bourbon',
-	amount: 10 // bottles
+	amount: 10
 }, 'Drinks');
 
 bar.fillUpStore({
 	name: 'Bourbon',
-	amount: 30 // bottles
+	amount: 30 
 }, 'Drinks');
 
 bar.fillUpStore({
 	name: 'Juice',
-	amount: 50 // bottles
+	amount: 50 
 }, 'Drinks');
 
 bar.fillUpStore({
 	name: 'Vodka',
-	amount: 12 // bottles
+	amount: 12 
 }, 'Drinks');
 
+john.getOrder({name: 'Juice', amount: 64}, 'Drinks');
+john.getOrder({name: 'Vodka', amount: 10}, 'Drinks');
+john.getOrder({name: 'Juice', amount: 20}, 'Drinks');
+john.getOrder({name: 'Bourbon', amount: 12}, 'Drinks');
+george.makeOrder(bar.orders[0], 'Drinks');
+
 console.log(bar); 
-john.getOrder({name: 'Juice', amount: 12, id: 0}, 'Drinks');
-john.getOrder({name: 'Vodka', amount: 10, id: 1}, 'Drinks');
-john.getOrder({name: 'Vodka', amount: 10, id: 2}, 'Drinks');
-john.getOrder({name: 'Vodka', amount: 10, id: 3}, 'Drinks');
-console.log(john.getTip(100));
-console.log(bar.divideTips());
-console.log(bar); 
-console.log(george.makeOrder(bar.orders[3], 'Drinks'));
-console.log(bar);
