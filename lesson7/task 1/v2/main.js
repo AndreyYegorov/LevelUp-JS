@@ -5,14 +5,15 @@
 		timestamp = (function(str) {
 			let date = str.match(/\d+\/\d+\/\d+/g)[0].split('/'),
 				time = str.match(/\d+:\d+:\d+/g)[0].split(':'),
-				timeZone = +str.match(/\+\d+/g)[0].slice(1, 3);
-
-			let dateArr = [].concat(date, time).map(el => +el);
+				timeZone = +str.match(/\+\d+/g)[0].slice(1, 3),
+				dateArr = [].concat(date, time).map(el => +el);
 
 			dateArr[1] -= 1;
-			dateArr[3] += timeZone - Math.abs(new Date().getTimezoneOffset()/60);
+			dateArr[3] -= timeZone;
 
-			return new Date(...dateArr).getTime();
+			let UTCDate = new Date(Date.UTC(...dateArr));
+
+			return UTCDate.getTime();
 		})(dateStr);
 
 	console.log(timestamp);
