@@ -36,10 +36,6 @@
 		$lastname = document.querySelector('.lastname span'),
 		$age = document.querySelector('.age span');
 
-	let	pageIdDefault = users.find(user => user.default).id;
-
-
-	renderPerson(pageIdDefault);
 
 	$nav.addEventListener('click', userClickHandler);
 
@@ -47,6 +43,13 @@
 
 	window.addEventListener('hashchange', hashHandler);
 
+	window.addEventListener('load', loadHandler);
+
+	function loadHandler(e) {
+		let	pageId = users.find(user => user.default).id;
+		
+		renderPerson(pageId);
+	}
 
 	function userClickHandler(e) {
 		let $target = e.target;
