@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+	
+		<link rel="stylesheet" href="normalize.css">
+        <style>
+        	.formStart-error {
+        		padding: .4em 0;
+        		color: red;
+        		font-size: 11px;
+        	}
+        	.chat {
+        		display: none;
+        	}
+        	.chat-pics {
+        		margin: 1em 0;
+        		overflow-x: auto;
+        		overflow-y: hidden;
+        		white-space: nowrap;
+        	}
+        	.chat-pics img {
+        		cursor: pointer;
+        	}
+        	main {
+        		width: 700px;
+				margin: auto;
+				padding: 1em 0;
+        	}
+			fieldset {
+				margin: 1em 0;
+			}
+			input, button {
+				padding: .5em;
+				font-size: 16px;
+			}
+			input {
+				width: 100%;
+			}
+			button {
+				width: 100px;
+			}
+        </style>
+    </head>
+    <body>
+    	<main>
+	    	<form action="/" class="formStart">
+	    		<fieldset>
+	    			<input type="text" placeholder="Enter your name" class="formStart-nameInput">
+	    		</fieldset>
+	    		<fieldset>
+	    			<button type="submit">Send</button>
+	    		</fieldset>
+	    	</form>
+	    	<div class="chat">
+	    		<div class="chat-area"></div>
+	    		<figure class="chat-pics"></figure>
+	    		<form action="/" class="chat-form">
+	    			<fieldset>
+	    				<input type="text" placeholder="Enter your message" class="chat-form-messageInput">
+	    			</fieldset>	
+	    			<fieldset>
+	    				<button type="submit">Send</button>
+	    			</fieldset>
+	    		</form>
+	    	</div>	
+    	</main>
+    	
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
