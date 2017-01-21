@@ -40,9 +40,9 @@
 
 			$formStart.style.display = 'none';
 			$chat.style.display = 'block';
-		}
 
-		$chatForm_inputMessage.focus();
+			$chatForm_inputMessage.focus();
+		}
 	}
 
 	function onChatFormSubmit(e) {
