@@ -14,11 +14,12 @@
         urlBase = 'http://api.giphy.com/v1/gifs',
         apiKey = 'dc6zaTOxFJmzC';
 
-    if(chatData.length) window.addEventListener("load", () => renderMessage(chatData, false));
     ws.on("chat message", data => renderMessage(data, true));
-
+    window.addEventListener("load", function(e) {
+        if(loginName) onLogin(e);
+        if(chatData.length) renderMessage(chatData, false);
+    });
     $chatForm.addEventListener("submit", onSendMessage);
-    if(loginName) window.addEventListener("load", onLogin);
     $loginForm.addEventListener("submit", onLogin);
     $gifsContainer.addEventListener("click", onSendImage);
 
