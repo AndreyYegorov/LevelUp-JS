@@ -5,7 +5,7 @@ const http = require('http'),
 	  path = require('path');
 
 const server = http.createServer((req, res) => {
-    let rootPath = './public',
+    let rootPath = 'public',
     	reqPath = req.url,
 		filePath = (reqPath === '/') ? 
 				   `${rootPath}/index.html` : 
@@ -14,13 +14,14 @@ const server = http.createServer((req, res) => {
     let extname = String(path.extname(filePath)).toLowerCase(),
     	mimeTypes = {
 	        '.html': 'text/html',
-	        '.js': 'application/javascript',
+	        '.js': 'text/javascript',
 	        '.css': 'text/css',
 	        '.png': 'image/png',
 	        '.jpg': 'image/jpg',
 	        '.gif': 'image/gif'
-	    },
-	    contentType = mimeTypes[extname];
+	    };
+
+	let contentType = mimeTypes[extname];
 
     fs.readFile(filePath, (error, content) => {
     	let fileStatus;
@@ -31,13 +32,15 @@ const server = http.createServer((req, res) => {
         	console.log(`${fileStatus} - there is no such file as ${reqPath}`);
 
             res.writeHead(fileStatus, { 'Content-Type': contentType });
-            res.end();
+            res.end(content, 'utf8');
         }
         else {
         	fileStatus = 200;
 
             res.writeHead(fileStatus, { 'Content-Type': contentType });
-            res.end();
+            res.end(content, 'utf8');
         }
     });
-}).listen(3000, () => { console.log('Listen on 3000'); });
+});
+
+server.listen(3000, () => { console.log('Listen on 3000'); })
