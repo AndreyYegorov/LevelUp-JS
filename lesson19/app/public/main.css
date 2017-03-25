@@ -1,0 +1,80 @@
+nav {
+	margin: 0 0 20px;
+}
+nav > a {
+	display: inline-block;
+	background-color: yellow;
+	padding: .5em;
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+}
+
+.booklist {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex: 1 1 250px;
+}
+.booklist-item {
+	margin: 0 20px 20px 0;
+	padding: 2em;
+	background-color: #fafafa;
+	color: #000;
+}
+.booklist-item > a {
+	color: inherit;
+	text-decoration: none;
+}
+.booklist-title {
+	margin-top: 0;
+}
+.booklist-description {
+	font-size: 18px;
+}
+.booklist-author {
+	font-weight: bold;
+	font-size: 16px;
+}
+.booklist-published {
+	font-size: 14px;
+	color: #ccc;
+	font-weight: bold;
+}
+
+.book {
+	margin: 0 0 20px;
+}
+.book-title {
+	margin-top: 0;
+}
+.book-description {
+	font-size: 18px;
+}
+.book-author {
+	font-weight: bold;
+	font-size: 16px;
+}
+.book-published {
+	font-size: 14px;
+	color: #ccc;
+	font-weight: bold;
+}
+
+.form_addNewBook {
+	width: 400px;
+}
+.form_addNewBook fieldset {
+	margin: 0 0 20px;
+	background-color: #fafafa;
+}
+.form_addNewBook label {
+	display: block;
+}
+
+.form_addNewBook input[type='text'], .form_addNewBook textarea {
+	width: 100%;
+}
