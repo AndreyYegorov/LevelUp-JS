@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "GaramondPremrPro-LtDisp";
+  src: url("./assets/fonts/GaramondPremrPro-LtDisp.eot");
+  src: url("./assets/fonts/GaramondPremrPro-LtDisp.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/GaramondPremrPro-LtDisp.ttf") format("truetype"), url("./assets/fonts/GaramondPremrPro-LtDisp.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "GaramondPremrPro-SmbdDisp";
+  src: url("./assets/fonts/GaramondPremrPro-SmbdDisp.eot");
+  src: url("./assets/fonts/GaramondPremrPro-SmbdDisp.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/GaramondPremrPro-SmbdDisp.ttf") format("truetype"), url("./assets/fonts/GaramondPremrPro-SmbdDisp.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: "FuturaNewBook-Reg";
+  src: url("./assets/fonts/FuturaNewBook-Reg.eot");
+  src: url("./assets/fonts/FuturaNewBook-Reg.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/FuturaNewBook-Reg.ttf") format("truetype"), url("./assets/fonts/FuturaNewBook-Reg.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "GaramondPremrPro-LtDisp", "Times New Roman", serif;
+    font-size: 23px;
+}
+
+body * {
+    box-sizing: inherit;
+}
+h1 {
+    font-size: 46px;
+}
+
+.container {
+    max-width: 620px;
+    margin: auto;
+    padding: 15px 0;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+.form {
+
+}
+.form-fieldset {
+    margin: 0 0 30px;
+}
+.form-fieldset:last-child {
+    margin-bottom: 0;
+}
+.form-fieldset-group {
+
+}
+.form-fieldset-group.mod_flex__justify {
+    display: flex;
+    justify-content: space-between;
+}
+.form-label {
+    display: block;
+    margin: 0 0 5px;
+}
+.form-input-text {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-bottom: 5px solid #b6a267;
+    font-family: "GaramondPremrPro-LtDisp", "Times New Roman", serif;
+    font-size: 18px;
+}
+.form-input-text:focus {
+    outline: none;
+}
+.form-input-textarea {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    resize: none;
+    border: 1px solid #ddd;
+    border-bottom: 5px solid #b6a267;
+    font-family: "GaramondPremrPro-LtDisp", "Times New Roman", serif;
+    font-size: 18px;
+}
+.form-input-textarea:focus {
+    outline: none;
+}
+.form-input-file {
+    
+}
+.form-input-file:focus {
+    outline: none;
+}
+.form-button {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+.form-button:focus {
+    outline: none;
+}
+.form-error {
+    margin: 15px 0 0;
+    color: red;
+    font-size: 16px;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 1;
+    cursor: pointer;
+}
+.button.mod_v1 {
+    height: 40px;
+    padding: 0 20px;
+    background-color: #b6a267;
+    cursor: pointer;
+    color: #fff;
+    font-family: "FuturaNewBook-Reg", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 14px;
+    line-height: 40px;
+    text-decoration: none;
+    text-align: center;
+}

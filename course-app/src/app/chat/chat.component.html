@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="chat">
+      <nav class="chat__auth">
+          <ul class="chat__auth-list" *ngIf="isLogged">
+            <li class="chat__auth-item">
+              <span (click)="logout()" class="chat__auth-link button mod_v1">Logout</span>
+            </li>
+          </ul>
+          <ul class="chat__auth-list" *ngIf="!isLogged">
+            <li class="chat__auth-item">
+              <a routerLink="/signup" class="chat__auth-link button mod_v1">Signup</a>
+            </li>
+            <li class="chat__auth-item">
+              <a routerLink="/login" class="chat__auth-link button mod_v1">Login</a>
+            </li>
+          </ul>
+      </nav>
+      
+      <h1 class="chat__heading">
+        <span class="chat__user" *ngIf="isLogged">Hi, {{userName}},</span>
+        {{title}}
+      </h1>
+
+      <div class="chat__search form">
+        <input type="text" class="chat__search-input form-input-text" placeholder="Search here, if you want..." [(ngModel)]="searchTerm">
+      </div>
+      
+      <div class="chat__messages">
+          <ul class="chat__messages-list">
+              <li *ngFor="let message of messages | filter:searchTerm" class="chat__messages-list-message chat__messages-message">
+                  <header class="chat__messages-message-header">
+                    <div class="chat__messages-message-username" [innerHTML]="message.userName | highlight:searchTerm"></div>
+                    <small class="chat__messages-message-date">
+                      {{message.date}}
+                    </small>
+                  </header>
+                  
+                  <div class="chat__messages-message-avatar">
+                    <img src="{{message.avatarUrl}}" alt="">
+                  </div>
+                  
+                  <p [innerHTML]="message.messageText | highlight:searchTerm | transformMessage:message" class="chat__messages-message-desc"></p>
+                  <figure *ngIf="message.imageUrl" class="chat__messages-message-pic">
+                    <img src="{{message.imageUrl}}" alt="">
+                  </figure>
+              </li>
+          </ul>
+      </div>
+
+      <form action="/" class="chat__form form" (ngSubmit)="addMessage(message.value); upload(); message.value=''; image.value='';" *ngIf="isLogged">
+          <div class="chat__form__fieldset form-fieldset">
+            <textarea name="message" id="message" cols="30" rows="10" class="chat__form-input-textarea form-input-textarea" #message placeholder="Type your message here..."></textarea>
+          </div>
+          <div class="chat__form__fieldset form-fieldset">
+            <label for="username" class="form-signup__label form-label">Add image:</label>
+            <div class="form-fieldset-group mod_flex__justify">
+              <input name="image" id="image" type="file" class="chat__form-input-file form-input-file" accept=".png,.jpg,.jpeg,.gif" (change)="fileChangeEvent($event)" #image>
+              <button class="form-button"><span class="button mod_v1">Send message</span></button>
+            </div>
+          </div>
+      </form>
+  </div>  
+</div>

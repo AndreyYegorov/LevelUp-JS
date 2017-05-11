@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>
+        Login
+    </h1>
+    <form action="/" class="form-login form" (ngSubmit)="login()">
+        <div class="form-login__fieldset form-fieldset">
+            <label for="username" class="form-login__label form-label">Username:</label>
+            <input type="text" name="username" id="username" #username="ngModel" [(ngModel)]="user.username" required class="form-login__input-text form-input-text">
+            <p [hidden]="username.valid || username.pristine" class="form-error">Username field is invalid</p>
+        </div>
+        <div class="form-login__fieldset form-fieldset">
+            <label for="password" class="form-login__label form-label">Password:</label>
+            <input type="password" name="password" id="password" #password="ngModel" [(ngModel)]="user.password" required class="form-login__input-text form-input-text">
+            <p [hidden]="password.valid || password.pristine" class="form-error">Password field is invalid</p>
+        </div>
+        <button class="form-button"><span class="button mod_v1">Login</span></button>
+        <p [hidden]="!loginError" class="form-error">{{loginError}}</p>
+    </form>   
+</div>

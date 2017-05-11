@@ -1,0 +1,121 @@
+.chat {
+    
+}
+.chat * {
+    box-sizing: inherit;
+}
+.chat__auth {
+
+}
+.chat__auth-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+.chat__auth-item {
+    margin: 0 0 0 10px;
+}
+.chat__auth-link {
+
+}
+
+.chat__search {
+    position: relative;
+    margin: 0 0 30px;
+}
+.chat__search:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 12px;
+    height: 100%;
+    background: url(assets/img/icon-search.png) 0 50% no-repeat;
+}
+.chat__search-input {
+    
+}
+.chat__heading {
+
+}
+.chat__user {
+
+}
+.chat__messages {
+
+}
+.chat__messages-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.chat__messages-list-message {
+
+}
+.chat__messages-message {
+    position: relative;
+    margin: 0 0 30px;
+    padding: 20px 20px 20px 90px;
+    border: 1px solid #ddd;
+}
+.chat__messages-message:last-child {
+    margin-bottom: 60px;
+}
+.chat__messages-message-header {
+    margin: 0 0 15px;
+    text-align: right;
+}
+.chat__messages-message-avatar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    width: 50px;
+    margin: 0 0 10px;
+}
+.chat__messages-message-avatar img {
+    width: 100%;
+}
+.chat__messages-message-username {
+    float: left;
+    color: #ababab;
+    font-family: "FuturaNewBook-Reg", Arial, Helvetica, sans-serif;
+    font-size: 22px;
+}
+.chat__messages-message-desc {
+    margin: 0 0 1em;
+    min-height: 10px;
+    font-size: 23px;
+}
+.chat__messages-message-desc:last-child {
+    margin-bottom: 0;
+}
+.chat__messages-message-pic {
+    overflow: hidden;
+    margin: 1em -20px -20px -90px;
+}
+.chat__messages-message-pic img {
+    display: block;
+    max-width: 100%;
+}
+.chat__messages-message-date {
+    color: #c3b07a;
+    font-family: "FuturaNewBook-Reg", Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+.chat__form {
+    
+}
+.chat__form-input-textarea {
+
+}
+.chat__form-input-file {
+
+}
+.chat__form button {
+
+}
